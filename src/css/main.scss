@@ -29,14 +29,18 @@ ul {
     margin: 0 auto;
     padding: 0 15px;
 }
-.nav{
-    background:  var(--color4);
+.nav {
+    background: var(--color4);
     display: flex;
     align-items: center;
-width: 100vw;
-padding: 15px;
-
+    width: 100vw;
+    padding: 15px;
+    position: sticky; /* Use sticky positioning */
+    top: 0;          /* Stick to the top of the viewport */
+    z-index: 100;     /* Ensure it stays on top of other elements */
 }
+
+
 .nav__img{
     width: 100%;
 }
@@ -56,8 +60,7 @@ padding: 15px;
     font-weight: 400;
     font-size: 25px;
     color:  var(--color3);
-    padding: 20px;
-    padding: 20px;
+    padding: 5px;
     display: flex;
     justify-content: center;
 }
@@ -127,7 +130,7 @@ padding: 15px;
 }
 
 .header__nav {
-    padding: 25px 0;
+    padding: 10px 0;
 }
 .title{
     font-family: var(--font-family);
@@ -138,7 +141,7 @@ padding: 15px;
 .background{
     width: 100%;
     z-index: -1;
-    height: 70vh;
+    height: 65vh;
 }
 .nav__bottom{
     margin-top: -45px;
@@ -238,7 +241,6 @@ justify-content: center;flex-wrap: wrap;
  .main__botom-item-title{
     display: flex;
     justify-content: center;
-    padding-top: 20px;
 
      font-family: Arial;
      font-weight: 400;
@@ -291,9 +293,6 @@ width: 100%;
 .main__botom-item{
     margin-bottom: 30px;
 }
-.nav__bottom{
-    padding-bottom: -20px;
-}
 .footer{
 padding: 20px;
 background:  var(--color4)
@@ -321,9 +320,7 @@ border:  var(--color3);
     color: gold; /* Set the color */
     font-size: 40px; /* Adjust the size */
   }
-  .main__img{
-    height: 50vh;
-  }
+
   .main__top-box{
     display: flex;justify-content: center;
     margin-bottom: 20px;
@@ -356,11 +353,23 @@ justify-content: center;
         justify-content: center;
         align-items: center;
         margin-top: 40px;
-        margin-bottom: 40px;
+
         gap: 40px;
   }
 .main__botom-itemes-beer{
     display: flex;
     justify-content: center;
     margin-right: 75px;
+}
+.nav__link:hover {
+  border-color: #007BFF;
+}
+.nav__link {
+  text-decoration: none;
+  color: var(--color3);
+  margin-right: 5px;
+  padding: 4px 8px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
 }

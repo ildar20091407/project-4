@@ -37,7 +37,7 @@ function ProductsPage1({ addToCart }) {
         >
           Назад
         </button>
-
+    <Link to="/users">Go to Card</Link> {/* Add the Link here */}
         <div className={s.main__bottom_item_title}>{product.title}</div>
         <div className={s.box}>
           <div className={s.box__right}>
@@ -62,6 +62,7 @@ function ProductsPage1({ addToCart }) {
           <div className={s.box__left}>
             <div className={s.main__bottom_item_text}>{product.text2}</div>
             <p className={s.rating}>Рейтинг: {product.rating}</p>
+            <p className={s.rating}>Цена: {product.price}</p>
 
             <ul className="nav__list">
               {links.map((link, i) => (

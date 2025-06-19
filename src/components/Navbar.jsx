@@ -9,10 +9,10 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [langMenuOpen, setLangMenuOpen] = useState(false);
 
-   function changeLang   (lng) {
+  const changeLang = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem(lng);
-    setLangMenuOpen(false); // закрыть меню после выбора
+    localStorage.setItem('language', lng); // Use a consistent key
+    setLangMenuOpen(false);
   };
 
   const links = [
@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="nav">
+      <nav className="nav" > 
         <div className="container">
           <div className="nav__box">
             <div className="nav__right">
@@ -44,9 +44,9 @@ const Navbar = () => {
 
               <ul className="header__nav-list">
                 <li className="header__nav-li" style={{ position: 'relative' }}>
-                  <img 
-                    src={logoLnguage} 
-                    className="header__nav-button" 
+                  <img
+                    src={logoLnguage}
+                    className="header__nav-button"
                     alt="Language selection"
                     onClick={() => setLangMenuOpen(!langMenuOpen)}
                     style={{ cursor: 'pointer' }}
@@ -91,4 +91,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
