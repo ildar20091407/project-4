@@ -93,7 +93,6 @@ function ProductsPage1({ addToCart }) {
               </button>
             </div>
 
-            {/* New: Favorite button */}
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Contacts.module.scss';
-import  VkIcon  from '../../assets/images/vk.png'; // Assuming you have SVG icons
+import  VkIcon  from '../../assets/images/VK.png'; // Assuming you have SVG icons
 import InstagramIcon  from '../../assets/images/instagram.png';
 import   Telegramm  from '../../assets/images/Telegram.png';
 import  WhatsAppIcon  from '../../assets/images/Whatsapp.png';

@@ -13,7 +13,7 @@ const Footer = () => {
 
       <div className={styles.links}>
         <ul className={styles.list}>
-          <li><Link to="/favorites">Избранное</Link></li>
+          <li><Link to="/favourites">Избранное</Link></li>
           <li><Link to="/card">Корзина</Link></li>
           <li><Link to="/contacts">Контакты</Link></li>
         </ul>
