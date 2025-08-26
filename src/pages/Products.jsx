@@ -1,58 +1,35 @@
-import React, { useState } from 'react';
-import ProductsBeer from '../components/ProductsBeer';
-import ProductsVino from '../components/ProductsVino';
-import ProductsVodka from '../components/ProductsVodka';
+import Footer from "../components/footer/Footer";
+import HeadPhones2 from "../components/Headphones copy/Headphones2";
+import HeadPhones from "../components/Headphones/Headphones";
+import Phones from "../components/Phones/Phones";
+import './Products.scss'
 
 const Products = () => {
-  // Состояние для выбранной категории
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
-  // Функция для выбора категории
-  const handleCardClick = (category) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <>
       <main className="main__bottom">
+        <div className="container">
+
         <div className="main__top-title">
-          <p>Мои работы</p>
           <nav className="nav">
-            <ul className="products__list nav__list" style={{ display: 'flex', gap: '20px' }}>
-              {/* Карточки категорий */}
-              <li 
-                className="products__nav-link nav__link" 
-                style={{ cursor: 'pointer', border: selectedCategory === 'vino' ? '2px solid blue' : '1px solid gray', padding: '10px', borderRadius: '8px' }}
-                onClick={() => handleCardClick('vino')}
-              >
-                Вино
+            <ul className="products__list nav__list">
+              <li className="products__nav-link nav__link">
+                <Phones /> {/* Render the Phones component here */}
               </li>
-              <li 
-                className="products__nav-link nav__link" 
-                style={{ cursor: 'pointer', border: selectedCategory === 'vodka' ? '2px solid blue' : '1px solid gray', padding: '10px', borderRadius: '8px' }}
-                onClick={() => handleCardClick('vodka')}
-              >
-                Водка
+              <li className="products__nav-link nav__link">
+                Наушники
+                <HeadPhones/>
               </li>
-              <li 
-                className="products__nav-link nav__link" 
-                style={{ cursor: 'pointer', border: selectedCategory === 'beer' ? '2px solid blue' : '1px solid gray', padding: '10px', borderRadius: '8px' }}
-                onClick={() => handleCardClick('beer')}
-              >
-                Пиво
+              <li className="products__nav-link nav__link">
+                 Беспроводные наушники
+                <HeadPhones2/>
               </li>
             </ul>
           </nav>
+          <Footer/>
+        </div>
         </div>
       </main>
-
-      {/* Отображение компонента в зависимости от выбранной категории */}
-      <div style={{ marginTop: '20px' }}>
-        {selectedCategory === 'vino' && <ProductsVino />}
-        {selectedCategory === 'vodka' && <ProductsVodka />}
-        {selectedCategory === 'beer' && <ProductsBeer />}
-        {!selectedCategory && <p>Выберите категорию, чтобы посмотреть продукты</p>}
-      </div>
     </>
   );
 };

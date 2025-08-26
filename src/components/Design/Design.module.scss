@@ -1,0 +1,197 @@
+.flex {
+  display: flex;
+  gap: 20px;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  max-width: 447px;
+width: 100%;
+}
+
+.checkout__address {
+  margin-bottom: 20px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  padding: 50px;
+}
+
+.checkout__input_wrapper {
+  margin-bottom: 15px;
+  position: relative;
+  border-radius: 15px;
+  max-width: 368px;
+  width: 100%;
+  height: 45px;
+  background: #d6d6d6;
+
+  &:focus-within { /* Style input wrapper when any child is focused */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Subtle focus effect */
+  }
+}
+
+.checkout__input {
+  border-radius: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  background: #d6d6d6;
+
+  &:focus {
+    outline: none; /* Remove default focus outline */
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.checkout__input_icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #888;
+}
+
+.checkout__input_group {
+  display: flex;
+  gap: 10px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.checkout__select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;  /* Remove the border */
+  border-radius: 15px;
+  background: #d6d6d6;  /* Match input background */
+  appearance: none;  /* Remove default select arrow */
+  -webkit-appearance: none;  /* For older Safari */
+  cursor: pointer; /* Give a pointer cursor */
+  position: relative; /*For the arrow positioning*/
+  &:after { /*Custom arrow*/
+    content: '\25BC'; /* Down arrow character */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none; /* Disable interaction with the pseudo element */
+}
+
+&:focus {
+    outline: none;  /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Subtle focus effect */
+  }
+}
+
+.checkout__order_summary {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.checkout__order_item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.checkout__payment {
+
+width: 100%;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 15px;
+
+}
+
+.checkout__payment_method {
+  display: flex;
+  align-items: center;
+  border: none; /*Remove the border*/
+  border-radius: 15px;
+  background: #fff;/*Match the input background*/
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 16px;
+
+  img {
+    margin-right: 10px;
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+  }
+
+  span:last-child {
+    margin-left: auto;
+  }
+
+  &:hover { /* Subtle hover effect */
+    background: lighten(#d6d6d6, 5%);
+  }
+
+  &:focus { /* Better focus indication */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.checkout__promo_code {
+  @extend .checkout__payment_method;
+}
+
+.checkout__phone_number {
+  margin-bottom: 20px;
+  border-radius: 30px;
+padding: 15px;
+box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+background: #fff;
+}
+
+.checkout__submit {
+  padding: 12px 20px;
+border-radius: 10px;
+
+width: 100%;
+height: 45px;
+box-shadow: 0 0 20px 0 rgba(67, 216, 84, 0.25);
+background: #101010;
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 15px;
+text-align: center;
+color: #fff;
+
+  &:hover {
+    background-color: #367c39;
+  }
+
+  &:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);  /*Stronger focus indication*/
+  }
+}

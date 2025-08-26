@@ -1,0 +1,142 @@
+
+
+:root {
+    --color: 
+    #bb1d25ab;
+    --color3: #fff;
+
+}
+
+
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: auto;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-items: center;
+  margin-bottom: 40px;
+  
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: auto;
+  }
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    grid-row: auto;
+  }
+}
+
+.item {
+  position: relative;
+  border-radius: 30px;
+background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  
+  &__title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    &__img{
+        border-radius: 10px;
+        margin-bottom: 15px;
+        height: 250px;
+        padding: 10px 50px ;
+    }
+}
+
+.btn{
+  border: none;
+  padding: 30px;
+  background: #fff;
+  border-radius: 30px;
+}
+
+
+.productTitle {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+    height: 50px;
+          font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-align: center;
+}
+
+.productPrice {
+    font-family: var(--font-family);
+font-weight: 600;
+font-size: 14px;
+color: #aaa;
+    text-decoration: line-through; /* Adds a strikethrough effect */
+}
+.productCard{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 40px;
+}
+
+.productStock {
+    color: green;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.noProducts {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    padding: 20px;
+}
+
+.productStockWithDiscount{
+   font-family: var(--font-family);
+font-weight: 600;
+font-size: 19px;
+color: #df6464;
+}
+.description{
+    padding: 10px;
+}
+
+.price{
+    display: flex;
+}
+.raiting__box{
+  display: flex;
+  padding: 25px;
+  max-width: 30px;
+  width: 100%;
+  &_text{
+    font-family: var(--font-family);
+font-weight: 600;
+font-size: 17px;
+color: #838383;
+  }
+}
+.star{
+  width: 100%;
+}
+.favoriteButton{
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  border: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}

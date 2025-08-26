@@ -1,125 +1,118 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import s from './Users.module.scss';
-import emailjs from '@emailjs/browser';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
+import Footer from '../components/footer/Footer';
+import bin from '../assets/images/Illustration.png'
 
-const Users = ({ cartItems, removeFromCart, updateQuantity }) => {
+const Users = ({ cartItems, updateQuantity}) => {
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const form = useRef();
 
-    const handleQuantityChange = (id, e) => {
-        const value = Number(e.target.value);
-        if (value >= 1) {
-            updateQuantity(id, value);
-        }
+    const handleIncrementQuantity = (id) => {
+        updateQuantity(id, (cartItems.find(item => item.id === id)?.quantity || 0) + 1);
     };
 
-    const generateCartText = () => {
-        let cartText = '';
-        if (cartItems.length === 0) {
-            cartText = 'Корзина пуста';
-        } else {
-            cartText = cartItems.map(item => `Товар: ${item.title},
-                
-                Цена: ${item.price}, 
-                
-                Кол-во: ${item.quantity},
-                
-                Сумма: ${item.price * item.quantity}.\n`).join('');
-
-                
-            cartText += `\nИтого: ${total} руб.`;
-        }
-        return cartText;
-    };
-
-    const handleSendClick = (e) => {
-        e.preventDefault();
-
-        if (form.current) {
-            const cartText = generateCartText();
-            form.current.message.value = cartText; // Assign cartText to message field
-
-            emailjs.sendForm('service_qpatmgp', 'template_lc1e2ax', form.current, 'JWaSpnmlhnunZpzHr')
-                .then((result) => {
-                    console.log(result.text);
-                    alert('Message sent!');
-                }, (error) => {
-                    console.log(error.text);
-                    alert('An error occurred, please try again.');
-                });
-        } else {
-            console.error("Form reference is not correctly attached.");
-            alert("Error: Form is not initialized correctly. Please try again.");
+    const handleDecrementQuantity = (id) => {
+        const currentQuantity = cartItems.find(item => item.id === id)?.quantity || 0;
+        if (currentQuantity > 1) {
+            updateQuantity(id, currentQuantity - 1);
         }
     };
 
     return (
-        <div>
-            <div className="border p-2 w-64">
-                <h2 className="text-xl font-semibold mb-2">Корзина</h2>
-                        <Link to="/products">Go to Products</Link> {/* Add the Link here */}
-                {cartItems.length === 0 ? (
-                    <p>Корзина пуста</p>
-                ) : (
-                    <div className={s.tableWrapper}>
-                        <table className={s.cartTable}>
-                            <thead>
-                                <tr>
-                                    <th>Товар</th>
-                                    <th>Изображение</th>
-                                    <th>Цена, руб.</th>
-                                    <th>Количество</th>
-                                    <th>Сумма, руб.</th>
-                                    <th>Удалить</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {cartItems.map((data) => (
-                                    <tr key={data.id}>
-                                        <td>{data.title}</td>
-                                        <td>
-                                            <img src={data.img} alt={data.title} />
-                                        </td>
-                                        <td>{data.price}</td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                value={data.quantity}
-                                                onChange={(e) => handleQuantityChange(data.id, e)}
-                                            />
-                                        </td>
-                                        <td>{data.price * data.quantity}</td>
-                                        <td>
-                                            <button
-                                                onClick={() => removeFromCart(data.id)}
-                                                title="Удалить товар"
-                                            >
-                                                ❌
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
-                <p className={s.total}>Итого: {total} руб.</p>
-            </div>
+        <div className="container">
+            <h2>Корзина</h2>
+{cartItems.length === 0 ? (
+  <div className="empty-cart">
+    <img src={bin} className="empty-cart__image" alt="Empty Cart" /> {/* Added alt attribute for accessibility */}
+    <h2 className="empty-cart__title">Корзина пуста</h2>
+    <p className="empty-cart__subtitle">{`Но это никогда не поздно исправить :)`}</p> {/* Corrected the string */}
+    <Link to="/" className="products__nav_link">В каталог товаров</Link> {/* Removed s. prefix */}
+  </div>
+) : (
 
-            {/* Contact Form */}
-            <form ref={form}>
-                <label>Name</label>
-                <input type="text" name="user_name" />
-                <label>Email</label>
-                <input type="email" name="user_email" />
-                <textarea name="message" style={{ display: 'none' }} />
+    <>
+                <div className={s.flex}>
 
-                <button onClick={handleSendClick}>Send</button>
-            </form>
-        </div>
-    );
-};
+                    <div className={s.card}>
+                        <div className={s.tableWrapper}>
+                            {cartItems.map((item) => {
+                                return (
+                                    <div key={item.id} className={s.good}>
+                                        <div className={s.good__box}>
+                                            <div className={s.good__box_left}>
+                                                <img className={s.good__box_left_img} src={item.img} alt={item.title} />
+                                            </div>
+                                            <div className={s.good__box_right}>
+                                                <p className={s.good__box_right_title}>{item.title}</p>
+                                                <p className={s.good__box_right_price}>{item.price} руб.</p>
+                                            </div>
+                                        </div>
+                                        <div className={s.bottom}>
+                                            <div className={s.quantityControl}>
+                                                <button
+                                                    onClick={() => handleDecrementQuantity(item.id)}
+                                                    disabled={item.quantity <= 1}
+                                                    >
+                                                    -
+                                                </button>
+                                                <input
+                                                    type="number"
+                                                    id={`quantity-${item.id}`}
+                                                    min="1"
+                                                    value={item.quantity}
+                                                    readOnly
+                                                    className={s.quantityInput}
+                                                    />
+                                                <button onClick={() => handleIncrementQuantity(item.id)}>+</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                );
+                            })}
+
+                        </div>
+
+                                <div className={s.item}>
+              <p className={s.item__title}>Доставка</p>
+              <div className={s.mapContainer}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.3823399717476!2d69.25897184115442!3d41.32229867142759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b15234bd621%3A0xb17c871fbdd0b36a!2z0KTQtdC00LXRgNCw0YbQuNGPINCU0JfQriDQlNCeINCYIFdCUEYgVVpC!5e0!3m2!1sru!2s!4v1728200162494!5m2!1sru!2s"
+                  borderRadius="10px"
+                  width="544"
+                  height="173"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Location Map"
+                  />
+                <div className={s.item__bottom}>
+                  <p className={s.item__text}>Доставка курьером</p>
+                  <p className={s.item__price}> 499 ₸</p>
+                </div>
+              </div>
+                  </div>
+             </div>
+                        <div className={s.total}>
+                            <div className={s.sum}>
+                                <p className={s.sum}>Итог: {total} T</p>
+                            </div>
+                            <div className={s.btn}>
+                            </div>
+                    <Link to={{ pathname: "/design", state: { total} }} className={s.btn1}>
+                      Перйти к оформлению
+                    </Link>
+               </div>
+               </div>
+                </>
+)}
+
+<Footer/>
+</div>
+)
+}
+
+
 
 export default Users;

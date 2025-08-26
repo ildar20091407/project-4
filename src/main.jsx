@@ -1,16 +1,19 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import store from './store/users/index';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom'; // Импортируйте BrowserRouter
 import './css/main.scss'
-import './css/media.scss'
-import './css/i18n';
 
-import { BrowserRouter } from 'react-router-dom';
-
-
-
-createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-      <App />
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>  {/* Оберните в BrowserRouter */}
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
-    
-)
+  </React.StrictMode>
+);
+

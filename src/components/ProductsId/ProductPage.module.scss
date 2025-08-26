@@ -1,0 +1,175 @@
+/* ProductPage.module.scss */
+
+/* Variables */
+:root {
+  --color: #bb1d25ab;
+  --color3: #fff;
+  --font-family: sans-serif; /* Example font-family */
+}
+
+/* General button styles */
+.btn {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: #df6464;
+  border: none;
+  padding: 10px 20px; /* Consistent padding */
+  border-radius: 4px; /* Consistent border-radius */
+  cursor: pointer;
+}
+
+/* Product Details */
+.productDetail {
+
+ width: 100%;
+ background: white;
+}
+.product {
+display: flex;
+justify-content: center;
+ width: 100%;
+ background: white;
+}
+
+.productImage {
+    max-width: 300px; /* Control image size */
+    max-height: 300px;
+    margin: 50px; /* Spacing around image */
+    object-fit: contain;
+}
+
+.productTitle {
+    font-size: 1.5em; /* Responsive title size */
+    margin-bottom: 5px;
+    color: #333;
+    /* Adjust negative margin if needed */
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center price elements */
+}
+
+.productStockWithDiscount {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 19px;
+    color: #df6464;
+}
+
+.raiting__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Reduced padding */
+}
+
+.raiting__box_text {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 17px;
+    color: #838383;
+    margin-left: 5px; /* Spacing for rating text */
+}
+
+/* Description Section */
+.description__title {
+    max-width: 650px;
+    width: 100%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.description__text {
+    width: 650px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    margin-top: -20px;
+    z-index: -1;
+    list-style: none;
+}
+
+.box{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Styles that should not be in a CSS module */
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .productImage {
+        max-width: 100%; /* Responsive image width */
+        max-height: auto; /* Maintain aspect ratio */
+        margin: 10px;
+    }
+    
+    .description__title,
+    .description__text {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+.item{
+    border-radius: 10px;
+    width: 254px;
+    height: 45px;
+
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+background: #101010;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+
+.details{
+    display: flex;
+    justify-content: center;
+}
+
+.imgContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+@media(max-width: 950px) {
+    .box{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+    }
+}
+@media(max-width: 500px) {
+    .imgContainer{
+        flex-direction: column;
+        display: flex;justify-content: center;
+    }
+}

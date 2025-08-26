@@ -1,0 +1,206 @@
+:root {
+  --color: #101010; // Цвет, который ты задал изначально.
+}
+
+.navbar {
+  padding: 10px 0;
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    //Можно раскоментить если нужно
+    //width: 100%;
+    //max-width: 1200px;
+    //margin: 0 auto;
+  }
+
+  &__logo {
+    margin: 0;
+    font-size: 2em;
+    display: inline-block;
+    margin-right: 20px;
+    max-width: 100px;
+    width: 100%;
+    margin-top: -50px;
+  }
+
+  &__select {
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 4px;
+    appearance: none; // Удаляет стандартные стили выпадающего списка в некоторых браузерах (по желанию)
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 16px;
+    padding-right: 30px; // Освобождаем место для стрелки
+  }
+
+  &__box-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__box-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__link {
+    height: 60px; // Это не влияет на визуальный размер кнопки, это влияет на высоту ссылки.
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px; // Задаем размер кнопки через padding
+    margin-left: 10px;
+    outline: none; // Чтобы убрать обводку при нажатии (по желанию)
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 0.8; // Эффект при наведении (по желанию)
+    }
+  }
+
+  &__icon {
+    width: 24px; // Пример размера, подстрой под свои нужды
+    height: 24px;
+    vertical-align: middle; // Выравниваем иконку по вертикали
+  }
+
+  &__icon1 {
+    width: 25px;
+    margin-top: -62px;
+    text-align: center;
+  }
+}
+
+//Общий стиль для контейнера
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px; // Добавляем отступы по бокам контейнера
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+
+  &__box {
+    border-radius: 30px;
+    max-width: 1200px;
+    width: 100%;
+    height: 197px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #101010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; // Добавляем внутренние отступы для текста и картинки
+
+    &-text {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 30px;
+      text-align: center;
+      color: #fff;
+      max-width: 300px;
+    }
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {  // Для планшетов и небольших экранов
+
+  .navbar {
+    padding: 5px 0; // Уменьшаем отступы
+
+    &__box {
+      padding: 0 10px; // Уменьшаем отступы
+    }
+
+    &__logo {
+      font-size: 1.5em; // Уменьшаем размер логотипа
+      margin-right: 10px;
+      margin-top: -30px;
+      max-width: 80px;
+    }
+
+    &__select {
+      font-size: 0.9em; // Уменьшаем размер шрифта в select
+      padding: 6px;
+    }
+
+    &__button {
+      padding: 5px 10px; // Уменьшаем размер кнопки
+      margin-left: 5px;
+    }
+
+
+
+
+  }
+
+  .bottom {
+    &__box {
+      height: auto; // Автоматическая высота
+      padding: 10px;
+
+      &-text {
+        font-size: 20px;
+        max-width: 200px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  // Для мобильных устройств
+
+  .navbar {
+    &__box {
+      flex-direction: column; // Выстраиваем элементы в колонку
+      align-items: stretch; // Растягиваем элементы по ширине
+      gap: 10px;
+    }
+
+    &__box-left,
+    &__box-right {
+      width: 100%; // Занимают всю ширину
+    }
+
+    &__select {
+      width: 100%; // Select занимает всю ширину
+      margin-bottom: 10px;
+    }
+
+    &__logo {
+      margin-top: 0;
+    }
+
+
+  }
+
+  .bottom {
+    &__box {
+      flex-direction: column; // Выстраиваем элементы в колонку
+      text-align: center;
+      align-items: center;
+
+      &-text {
+        font-size: 16px;
+      }
+
+      img {
+        max-width: 80%; // Уменьшаем ширину картинки
+      }
+    }
+  }
+}
